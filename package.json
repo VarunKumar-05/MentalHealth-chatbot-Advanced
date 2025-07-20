@@ -1,0 +1,48 @@
+{
+  "name": "mental-health-chatbot",
+  "version": "1.0.0",
+  "description": "AI-powered mental health chatbot with OAuth authentication and sentiment analysis",
+  "main": "index.js",
+  "scripts": {
+    "dev": "supabase start",
+    "build": "echo 'No build step required for static frontend'",
+    "deploy:db": "supabase db push",
+    "deploy:functions": "supabase functions deploy",
+    "deploy:all": "npm run deploy:db && npm run deploy:functions",
+    "reset": "supabase db reset",
+    "status": "supabase status",
+    "logs": "supabase logs",
+    "studio": "supabase studio",
+    "types": "supabase gen types typescript --local > types.ts",
+    "test": "echo 'Add your test commands here'",
+    "lint": "echo 'Add your linting commands here'"
+  },
+  "keywords": [
+    "mental-health",
+    "chatbot",
+    "ai",
+    "supabase",
+    "oauth",
+    "sentiment-analysis",
+    "typescript",
+    "angularjs"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "@supabase/supabase-js": "^2.38.0",
+    "supabase": "^1.127.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/mental-health-chatbot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/mental-health-chatbot/issues"
+  },
+  "homepage": "https://github.com/yourusername/mental-health-chatbot#readme"
+} 

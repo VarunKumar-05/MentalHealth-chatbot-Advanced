@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html ng-app="chatApp">
+<head>
+  <meta charset="utf-8">
+  <title>Mental Health Chatbot</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AI-powered mental health chatbot with sentiment analysis">
+</head>
+<body ng-controller="ChatController" onload="checkAuthentication()">
+  <div class="chat-container">
+    <div class="chat-header">
+      <div class="header-content">
+        <h2>Mental Health Chatbot</h2>
+        <div class="user-info" ng-if="userInfo">
+          <div class="user-avatar">
+            <img ng-if="userInfo.picture" ng-src="{{userInfo.picture}}" alt="Profile" />
+            <span ng-if="!userInfo.picture" class="avatar-placeholder">{{userInfo.name.charAt(0)}}</span>
+          </div>
+          <div class="user-details">
+            <span class="user-name">{{userInfo.name}}</span>
+            <span class="user-type" ng-if="userInfo.isGuest">Guest</span>
+          </div>
+          <button class="logout-btn" ng-click="logout()" title="Logout">
+            <span>🚪</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Sentiment Analysis Panel -->
+    <div class="sentiment-panel" ng-if="sentimentInfo">
+      <div class="sentiment-info">
+        <div class="sentiment-item">
+          <span class="label">Sentiment:</span>
+          <span class="value" ng-style="{'color': getSentimentColor(sentimentInfo.sentiment)}">
+            {{sentimentInfo.sentiment | uppercase}}
+          </span>
+        </div>
+        <div class="sentiment-item">
+          <span class="label">Emotion:</span>
+          <span class="value">
+            {{getEmotionIcon(sentimentInfo.emotion)}} {{sentimentInfo.emotion | uppercase}}
+          </span>
+        </div>
+        <div class="sentiment-item">
+          <span class="label">Confidence:</span>
+          <span class="value">{{sentimentInfo.confidence | number:1}}%</span>
+        </div>
+        <div class="sentiment-item">
+          <span class="label">Intent:</span>
+          <span class="value">{{sentimentInfo.intent}}</span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Conversation Trend Panel -->
+    <div class="trend-panel" ng-if="conversationTrend">
+      <div class="trend-info">
+        <h4>Conversation Analysis</h4>
+        <div class="trend-item">
+          <span class="label">Dominant Sentiment:</span>
+          <span class="value" ng-style="{'color': getSentimentColor(conversationTrend.dominant_sentiment)}">
+            {{conversationTrend.dominant_sentiment | uppercase}}
+          </span>
+        </div>
+        <div class="trend-item">
+          <span class="label">Dominant Emotion:</span>
+          <span class="value">{{getEmotionIcon(conversationTrend.dominant_emotion)}} {{conversationTrend.dominant_emotion | uppercase}}</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="chat-messages" id="chat-messages">
+      <div ng-repeat="msg in messages" ng-class="msg.sender">
+        <div class="msg-bubble" ng-if="msg.sender !== 'typing'">
+          <span>{{msg.text}}</span>
+        </div>
+        <!-- Typing Indicator -->
+        <div class="typing-indicator" ng-if="msg.sender === 'typing'">
+          <div class="typing-dot"></div>
+          <div class="typing-dot"></div>
+          <div class="typing-dot"></div>
+        </div>
+      </div>
+    </div>
+    
+    <form ng-submit="sendMessage()" class="chat-input">
+      <input 
+        type="text" 
+        ng-model="userInput" 
+        placeholder="Type your message..." 
+        autocomplete="off" 
+        required 
+        ng-keypress="handleKeyPress($event)"
+        ng-disabled="isTyping"
+      />
+      <button type="submit" ng-disabled="isTyping || !userInput">
+        <span ng-if="!isTyping">Send</span>
+        <span ng-if="isTyping">...</span>
+      </button>
+    </form>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html> 

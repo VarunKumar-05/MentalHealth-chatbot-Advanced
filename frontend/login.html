@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html ng-app="authApp">
+<head>
+  <meta charset="utf-8">
+  <title>Login - Mental Health Chatbot</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="login.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Login to access the AI-powered mental health chatbot">
+</head>
+<body ng-controller="LoginController">
+  <div class="login-container">
+    <div class="login-card">
+      <div class="login-header">
+        <h1>Welcome to Mental Health Chatbot</h1>
+        <p>Your safe space for mental health support</p>
+      </div>
+      
+      <div class="login-content">
+        <div class="welcome-message">
+          <h2>Sign in to continue</h2>
+          <p>We're here to provide you with confidential mental health support. Please sign in to start your conversation.</p>
+        </div>
+        
+        <div class="oauth-buttons">
+          <div id="g_id_onload"
+               data-client_id="YOUR_GOOGLE_CLIENT_ID"
+               data-callback="handleCredentialResponse"
+               data-auto_prompt="false">
+          </div>
+          <div class="g_id_signin"
+               data-type="standard"
+               data-size="large"
+               data-theme="outline"
+               data-text="sign_in_with"
+               data-shape="rectangular"
+               data-logo_alignment="left">
+          </div>
+          
+          <div class="divider">
+            <span>or</span>
+          </div>
+          
+          <button class="guest-login-btn" ng-click="guestLogin()">
+            <span class="guest-icon">👤</span>
+            Continue as Guest
+          </button>
+        </div>
+        
+        <div class="privacy-notice">
+          <p>By signing in, you agree to our privacy policy and terms of service. Your conversations are confidential and secure.</p>
+        </div>
+        
+        <div class="crisis-info">
+          <p><strong>If you're in crisis:</strong> Please call your local emergency services or a crisis hotline immediately. This chatbot is not a substitute for professional medical help.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="login.js"></script>
+</body>
+</html> 

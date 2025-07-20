@@ -1,0 +1,8 @@
+flask
+flask-cors
+scikit-learn
+joblib
+nltk
+textblob
+PyJWT
+requests 

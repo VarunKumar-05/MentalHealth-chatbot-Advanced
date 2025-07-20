@@ -1,0 +1,58 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.env
+.venv/
+venv/
+ENV/
+*.egg-info/
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# Model files
+*.pkl
+*.h5
+*.joblib
+*.pt
+*.onnx
+
+# Node.js
+node_modules/
+
+# Supabase
+.supabase/
+supabase/.output/
+supabase/.temp/
+supabase/.env
+supabase/functions/node_modules/
+supabase/functions/**/node_modules/
+supabase/functions/**/.output/
+supabase/functions/**/.temp/
+
+# Environment files
+.env
+.env.*
+*.env.*
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Vercel/Netlify
+.vercel/
+.netlify/
+
+# Build
+build/
+dist/
+
+# Misc
+*.swp
+*.bak
+*.tmp 
