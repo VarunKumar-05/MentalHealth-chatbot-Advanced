@@ -28,8 +28,7 @@ MentalHealth-chatbot-Advanced is an intelligent, multimodal chatbot designed to 
 - **TypeScript**: Frontend logic and interfaces
 - **JavaScript, CSS, HTML**: UI/UX
 - **PLpgSQL**: Database queries and logic
-- **Gemma 3n Model**: Fine-tuned for mental health domain
-
+- **GenAI**:using API calls through GROQapi
 ---
 
 ## 🛠️ Getting Started
